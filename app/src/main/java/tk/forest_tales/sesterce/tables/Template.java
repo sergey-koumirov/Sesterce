@@ -2,20 +2,12 @@ package tk.forest_tales.sesterce.tables;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Index;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(
-        tableName = "transactions",
-        indices = {
-                @Index("tdate"),
-                @Index("account_id_from"),
-                @Index("account_id_to")
-        }
-)
-
-public class Transaction {
+@Entity(tableName = "templates")
+public class Template {
 
     @PrimaryKey
     @NonNull
@@ -39,28 +31,27 @@ public class Transaction {
     private Long mAmountTo;
 
     @NonNull
-    @ColumnInfo(name = "tdate")
-    private String mTDate;
-
     @ColumnInfo(name = "description")
     private String mDescription;
 
-    public Transaction(
+    public Template(
             @NonNull Integer id,
             @NonNull Integer accountIdFrom,
             @NonNull Long amountFrom,
             @NonNull Integer accountIdTo,
             @NonNull Long amountTo,
-            @NonNull String tDate,
-            String description
+            @NonNull String description
     ) {
         this.mId = id;
         this.mAccountIdFrom = accountIdFrom;
         this.mAmountFrom = amountFrom;
         this.mAccountIdTo = accountIdTo;
         this.mAmountTo = amountTo;
-        this.mTDate = tDate;
         this.mDescription = description;
+    }
+
+    @Ignore
+    public Template() {
     }
 
     public Integer getId(){return this.mId;}
@@ -68,7 +59,6 @@ public class Transaction {
     public Long getAmountFrom(){return this.mAmountFrom;}
     public Integer getAccountIdTo(){return this.mAccountIdTo;}
     public Long getAmountTo(){return this.mAmountTo;}
-    public String getTDate(){return this.mTDate;}
     public String getDescription(){return this.mDescription;}
 
 }

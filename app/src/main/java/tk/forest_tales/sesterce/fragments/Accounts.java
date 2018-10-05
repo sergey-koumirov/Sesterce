@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import tk.forest_tales.sesterce.ActivityAccountEditor;
+import tk.forest_tales.sesterce.editors.AccountEditor;
 import tk.forest_tales.sesterce.R;
 import tk.forest_tales.sesterce.tables.Account;
 import tk.forest_tales.sesterce.view.AccountListAdapter;
@@ -67,7 +67,7 @@ public class Accounts extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ActivityAccountEditor.class);
+                Intent intent = new Intent(context, AccountEditor.class);
                 startActivityForResult(intent, NEW_ACCOUNT);
             }
         });
@@ -81,17 +81,17 @@ public class Accounts extends Fragment {
         if(resultCode == RESULT_OK) {
             if (requestCode == NEW_ACCOUNT) {
                 Account account = new Account(
-                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_NAME),
-                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_CURRENCY),
-                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_KIND)
+                        data.getStringExtra(AccountEditor.EXTRA_REPLY_NAME),
+                        data.getStringExtra(AccountEditor.EXTRA_REPLY_CURRENCY),
+                        data.getStringExtra(AccountEditor.EXTRA_REPLY_KIND)
                 );
                 mAccountViewModel.insert(account);
             }else if( requestCode == EDIT_ACCOUNT) {
                 Account account = new Account(
-                        data.getIntExtra(ActivityAccountEditor.EXTRA_REPLY_ID,-1),
-                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_NAME),
-                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_CURRENCY),
-                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_KIND)
+                        data.getIntExtra(AccountEditor.EXTRA_REPLY_ID,-1),
+                        data.getStringExtra(AccountEditor.EXTRA_REPLY_NAME),
+                        data.getStringExtra(AccountEditor.EXTRA_REPLY_CURRENCY),
+                        data.getStringExtra(AccountEditor.EXTRA_REPLY_KIND)
                 );
                 mAccountViewModel.update(account);
             }else{

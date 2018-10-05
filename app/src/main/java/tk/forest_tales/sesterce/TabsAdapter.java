@@ -8,10 +8,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import tk.forest_tales.sesterce.fragments.Accounts;
 import tk.forest_tales.sesterce.fragments.Info;
+import tk.forest_tales.sesterce.fragments.Templates;
 import tk.forest_tales.sesterce.fragments.Transactions;
 
 public class TabsAdapter extends FragmentPagerAdapter {
-    private String tabTitles[] = new String[] { "Info", "Transactions", "Accounts" };
+    private String tabTitles[] = new String[] { "Info", "Transactions", "Accounts", "Templates" };
     private Context context;
 
     public TabsAdapter(FragmentManager fm, Context context) {
@@ -29,6 +30,7 @@ public class TabsAdapter extends FragmentPagerAdapter {
         switch(position){
             case 1: return Transactions.newInstance();
             case 2: return Accounts.newInstance();
+            case 3: return Templates.newInstance();
         }
         return Info.newInstance();
     }

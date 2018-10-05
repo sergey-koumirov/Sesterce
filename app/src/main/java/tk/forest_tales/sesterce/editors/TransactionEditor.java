@@ -1,4 +1,4 @@
-package tk.forest_tales.sesterce;
+package tk.forest_tales.sesterce.editors;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class ActivityNewTransaction extends AppCompatActivity{
+import tk.forest_tales.sesterce.R;
+
+public class TransactionEditor extends AppCompatActivity{
 
     public static final String EXTRA_REPLY_NAME = "com.example.android.transactionlistsql.REPLY_NAME";
     public static final String EXTRA_REPLY_CURRENCY = "com.example.android.transactionlistsql.REPLY_CURRENCY";

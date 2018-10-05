@@ -17,14 +17,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import tk.forest_tales.sesterce.ActivityAccountEditor;
+import tk.forest_tales.sesterce.editors.AccountEditor;
 import tk.forest_tales.sesterce.R;
 import tk.forest_tales.sesterce.tables.Account;
 
-import static tk.forest_tales.sesterce.ActivityAccountEditor.EXTRA_REPLY_ID;
-import static tk.forest_tales.sesterce.ActivityAccountEditor.EXTRA_REPLY_NAME;
-import static tk.forest_tales.sesterce.ActivityAccountEditor.EXTRA_REPLY_CURRENCY;
-import static tk.forest_tales.sesterce.ActivityAccountEditor.EXTRA_REPLY_KIND;
+import static tk.forest_tales.sesterce.editors.AccountEditor.EXTRA_REPLY_ID;
+import static tk.forest_tales.sesterce.editors.AccountEditor.EXTRA_REPLY_NAME;
+import static tk.forest_tales.sesterce.editors.AccountEditor.EXTRA_REPLY_CURRENCY;
+import static tk.forest_tales.sesterce.editors.AccountEditor.EXTRA_REPLY_KIND;
 import static tk.forest_tales.sesterce.fragments.Accounts.EDIT_ACCOUNT;
 
 public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.AccountViewHolder>{
@@ -66,7 +66,7 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
                     int p=getLayoutPosition();
                     final Account current = mAccounts.get(p);
 
-                    Intent intent = new Intent(mContext, ActivityAccountEditor.class);
+                    Intent intent = new Intent(mContext, AccountEditor.class);
                     intent.putExtra(EXTRA_REPLY_ID, current.getId());
                     intent.putExtra(EXTRA_REPLY_NAME, current.getName());
                     intent.putExtra(EXTRA_REPLY_CURRENCY, current.getCurrency());

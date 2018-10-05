@@ -9,12 +9,14 @@ import android.content.Context;
 import android.os.Environment;
 
 import tk.forest_tales.sesterce.tables.Account;
+import tk.forest_tales.sesterce.tables.Template;
 import tk.forest_tales.sesterce.tables.Transaction;
 
-@Database(entities = {Account.class, Transaction.class}, version = 2)
+@Database(entities = {Account.class, Transaction.class, Template.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract AccountDao accountDao();
     public abstract TransactionDao transactionDao();
+    public abstract TemplateDao templateDao();
 
     private static volatile AppDatabase INSTANCE;
 
@@ -26,7 +28,10 @@ public abstract class AppDatabase extends RoomDatabase {
                             context.getApplicationContext(),
                             AppDatabase.class,
                             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/sesterce_database"
-                    ).addMigrations(MIGRATION_1_2).build();
+                    ).addMigrations(
+                            MIGRATION_1_2,
+                            MIGRATION_2_3
+                    ).build();
                 }
             }
         }
@@ -37,6 +42,27 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
             database.execSQL("alter table accounts add column kind text not null default 'E'");
+        }
+    };
+
+    static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL(
+                    "CREATE TABLE templates (" +
+                        "id INTEGER NOT NULL, " +
+                        "account_id_from INTEGER NOT NULL, " +
+                        "amount_from INTEGER NOT NULL, " +
+                        "account_id_to INTEGER NOT NULL, " +
+                        "amount_to INTEGER NOT NULL, " +
+                        "description TEXT NOT NULL, " +
+                        "PRIMARY KEY(id)" +
+                    ")"
+            );
+
+            database.execSQL("create index index_transactions_tdate on transactions(tdate);");
+            database.execSQL("create index index_transactions_account_id_from on transactions(account_id_from);");
+            database.execSQL("create index index_transactions_account_id_to on transactions(account_id_to);");
         }
     };
 

@@ -1,4 +1,4 @@
-package tk.forest_tales.sesterce;
+package tk.forest_tales.sesterce.editors;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,9 @@ import android.widget.Spinner;
 
 import java.util.Arrays;
 
-public class ActivityAccountEditor extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import tk.forest_tales.sesterce.R;
+
+public class AccountEditor extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final String EXTRA_REPLY_ID = "com.example.android.accountlistsql.REPLY_ID";
     public static final String EXTRA_REPLY_NAME = "com.example.android.accountlistsql.REPLY_NAME";

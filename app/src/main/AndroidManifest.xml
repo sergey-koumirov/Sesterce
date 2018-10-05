@@ -17,8 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityAccountEditor"></activity>
-        <activity android:name=".ActivityNewTransaction"></activity>
+        <activity android:name=".editors.AccountEditor"></activity>
+        <activity android:name=".editors.TransactionEditor"></activity>
     </application>
 
 

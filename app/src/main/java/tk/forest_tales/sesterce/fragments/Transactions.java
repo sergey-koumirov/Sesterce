@@ -14,11 +14,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
-import tk.forest_tales.sesterce.ActivityNewTransaction;
+import tk.forest_tales.sesterce.editors.TransactionEditor;
 import tk.forest_tales.sesterce.R;
 import tk.forest_tales.sesterce.tables.Transaction;
 import tk.forest_tales.sesterce.view.TransactionListAdapter;
@@ -65,7 +64,7 @@ public class Transactions extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ActivityNewTransaction.class);
+                Intent intent = new Intent(context, TransactionEditor.class);
                 startActivityForResult(intent, NEW_TRANSACTION_ACTIVITY_REQUEST_CODE);
             }
         });
