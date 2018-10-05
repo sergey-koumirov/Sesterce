@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".editors.AccountEditor"></activity>
         <activity android:name=".editors.TransactionEditor"></activity>
+        <activity android:name=".editors.TemplateEditor"></activity>
     </application>
 
 

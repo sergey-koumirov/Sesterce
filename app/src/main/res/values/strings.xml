@@ -7,6 +7,7 @@
     <string name="account_name">Name</string>
     <string name="account_name_from">Account -&gt;</string>
     <string name="account_name_to">-&gt; Account</string>
+    <string name="arrow">-&gt;</string>
     <string name="account_currency">Currency</string>
     <string name="account_kind">Kind</string>
 

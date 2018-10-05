@@ -29,7 +29,7 @@ public class AccountEditor extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_editor);
+        setContentView(R.layout.editor_account);
 
         selectedId = this.getIntent().getIntExtra(EXTRA_REPLY_ID, -1);
 

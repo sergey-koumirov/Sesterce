@@ -23,6 +23,6 @@
         app:elevation="0dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        app:backgroundTint="@color/colorPrimary"/>
+        app:backgroundTint="@color/colorPrimaryDark"/>
 
 </RelativeLayout>
