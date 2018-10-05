@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="currency_labels">
+        <item>EUR</item>
+        <item>RUR</item>
+        <item>USD</item>
+    </array>
+
+    <array name="kind_labels">
+        <item>Expense</item>
+        <item>Income</item>
+        <item>Balance</item>
+    </array>
+
+    <array name="kind_values">
+        <item>E</item>
+        <item>I</item>
+        <item>B</item>
+    </array>
+
+</resources>

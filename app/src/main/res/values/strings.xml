@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Sesterce</string>
+    <string name="hint_account">Account...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Not saved because it is empty.</string>
+
+    <string name="account_name">Name</string>
+    <string name="account_name_from">Account -&gt;</string>
+    <string name="account_name_to">-&gt; Account</string>
+    <string name="account_currency">Currency</string>
+    <string name="account_kind">Kind</string>
+
+</resources>
