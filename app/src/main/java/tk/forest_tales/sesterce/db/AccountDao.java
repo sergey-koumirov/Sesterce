@@ -5,6 +5,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ import tk.forest_tales.sesterce.tables.Account;
 public interface AccountDao {
     @Insert
     void insert(Account account);
+
+    @Update
+    void update(Account account);
 
     @Delete
     void delete(Account account);

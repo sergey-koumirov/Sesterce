@@ -26,6 +26,10 @@ public class AccountRepository {
         new insertAsyncTask(mAccountDao).execute(account);
     }
 
+    public void update(Account account) {
+        new updateAsyncTask(mAccountDao).execute(account);
+    }
+
     public void delete(Account account) {
         new deleteAsyncTask(mAccountDao).execute(account);
     }
@@ -41,6 +45,20 @@ public class AccountRepository {
         @Override
         protected Void doInBackground(final Account... params) {
             mAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class updateAsyncTask extends AsyncTask<Account, Void, Void> {
+        private AccountDao mAsyncTaskDao;
+
+        updateAsyncTask(AccountDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Account... params) {
+            mAsyncTaskDao.update(params[0]);
             return null;
         }
     }

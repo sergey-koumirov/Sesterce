@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -23,12 +25,12 @@ import static tk.forest_tales.sesterce.ActivityAccountEditor.EXTRA_REPLY_ID;
 import static tk.forest_tales.sesterce.ActivityAccountEditor.EXTRA_REPLY_NAME;
 import static tk.forest_tales.sesterce.ActivityAccountEditor.EXTRA_REPLY_CURRENCY;
 import static tk.forest_tales.sesterce.ActivityAccountEditor.EXTRA_REPLY_KIND;
-import static tk.forest_tales.sesterce.fragments.Accounts.EDIT_ACCOUNT_ACTIVITY_REQUEST_CODE;
+import static tk.forest_tales.sesterce.fragments.Accounts.EDIT_ACCOUNT;
 
 public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.AccountViewHolder>{
 
     class AccountViewHolder extends RecyclerView.ViewHolder {
-        private final TextView accountKindView;
+        private final ImageView accountKindView;
         private final TextView accountCurrencyView;
         private final TextView accountNameView;
 
@@ -69,7 +71,7 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
                     intent.putExtra(EXTRA_REPLY_NAME, current.getName());
                     intent.putExtra(EXTRA_REPLY_CURRENCY, current.getCurrency());
                     intent.putExtra(EXTRA_REPLY_KIND, current.getKind());
-                    mFragment.startActivityForResult(intent, EDIT_ACCOUNT_ACTIVITY_REQUEST_CODE);
+                    mFragment.startActivityForResult(intent, EDIT_ACCOUNT);
                 }
             });
 
@@ -101,15 +103,13 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
         if (mAccounts != null) {
             Account current = mAccounts.get(position);
 
-            holder.accountKindView.setText(current.getKind());
+            holder.accountKindView.setImageDrawable( kindToImage(current.getKind()) );
 
             holder.accountCurrencyView.setText(current.getCurrency());
             holder.accountCurrencyView.setTextColor( currencyToColor(current.getCurrency()) );
 
             holder.accountNameView.setText(current.getName());
         } else {
-            holder.accountKindView.setText("N/A");
-            holder.accountCurrencyView.setText("N/A");
             holder.accountNameView.setText("N/A");
         }
     }
@@ -135,5 +135,14 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
             case "EUR": return ContextCompat.getColor(mContext, R.color.currencyEUR);
         }
         return Color.GRAY;
+    }
+
+    private Drawable kindToImage(String kind){
+        switch(kind){
+            case "B": return ContextCompat.getDrawable(mContext, R.drawable.ic_balance_black_24dp);
+            case "I": return ContextCompat.getDrawable(mContext, R.drawable.ic_income_black_24dp);
+            case "E": return ContextCompat.getDrawable(mContext, R.drawable.ic_expense_black_24dp);
+        }
+        return ContextCompat.getDrawable(mContext, R.drawable.ic_add_black_24dp);
     }
 }

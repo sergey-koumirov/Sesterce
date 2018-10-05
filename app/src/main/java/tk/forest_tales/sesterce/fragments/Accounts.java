@@ -28,8 +28,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class Accounts extends Fragment {
 
-    public static final int NEW_ACCOUNT_ACTIVITY_REQUEST_CODE = 1;
-    public static final int EDIT_ACCOUNT_ACTIVITY_REQUEST_CODE = 2;
+    public static final int NEW_ACCOUNT = 1;
+    public static final int EDIT_ACCOUNT = 2;
 
     private AccountViewModel mAccountViewModel;
 
@@ -68,7 +68,7 @@ public class Accounts extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ActivityAccountEditor.class);
-                startActivityForResult(intent, NEW_ACCOUNT_ACTIVITY_REQUEST_CODE);
+                startActivityForResult(intent, NEW_ACCOUNT);
             }
         });
 
@@ -79,14 +79,22 @@ public class Accounts extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK) {
-            if (requestCode == NEW_ACCOUNT_ACTIVITY_REQUEST_CODE) {
+            if (requestCode == NEW_ACCOUNT) {
                 Account account = new Account(
                         data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_NAME),
                         data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_CURRENCY),
                         data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_KIND)
                 );
                 mAccountViewModel.insert(account);
-            } else {
+            }else if( requestCode == EDIT_ACCOUNT) {
+                Account account = new Account(
+                        data.getIntExtra(ActivityAccountEditor.EXTRA_REPLY_ID,-1),
+                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_NAME),
+                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_CURRENCY),
+                        data.getStringExtra(ActivityAccountEditor.EXTRA_REPLY_KIND)
+                );
+                mAccountViewModel.update(account);
+            }else{
                 Toast.makeText(
                         this.getActivity().getApplicationContext(),
                         R.string.empty_not_saved,

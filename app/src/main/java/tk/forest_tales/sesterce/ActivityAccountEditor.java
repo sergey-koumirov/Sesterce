@@ -27,7 +27,7 @@ public class ActivityAccountEditor extends AppCompatActivity implements AdapterV
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_new);
+        setContentView(R.layout.activity_account_editor);
 
         selectedId = this.getIntent().getIntExtra(EXTRA_REPLY_ID, -1);
 

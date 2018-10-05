@@ -23,5 +23,7 @@ public class AccountViewModel extends AndroidViewModel {
 
     public void insert(Account account) { mRepository.insert(account); }
 
+    public void update(Account account) { mRepository.update(account); }
+
     public void delete(Account account) { mRepository.delete(account); }
 }
